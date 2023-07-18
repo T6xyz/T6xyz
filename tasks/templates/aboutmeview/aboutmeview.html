@@ -1,0 +1,44 @@
+{% extends "homeview/homeview.html" %}
+{% block content %}
+{% load static %}
+
+<div style="height: 1780px;">
+
+    <article style="margin-top: 75px;" class="hidden">
+        <img style="max-width: 33%; height: auto;" src="{% static 'images/main.jpg' %}" alt="none">
+        <p style="margin: 15px; width: 60%;">Hi, my name is Ben Zwolenik and I am currently a sophmore at Georgia Tech studying computer science. I have experience with many different languages including Python, CSS, HTML, JavaScript, C++, and SQL</p>
+    </article>
+
+    <article style="margin-top: 540px;" class="hidden">
+        <h5>My background</h5>
+        <p style="width: 60%;">Born to a family of immigrants from Poland, I am the first individual in my family who was born in the United States. I am currently 19 years old and ever since I was a little kid, I have always been interested in computers and mathematics. I also have a passion for hobbies such as powerlifting, fishing, and teaching younger students math.</p>
+    </article>
+
+    <article style="margin-top: 540px; padding: 30px;" class="hidden">
+        <h5>My mission</h5>
+        <p style="width: 60%;">My mission as a student and web app developer is to provide the best product to my clients regardless of requests and difficulty. If I build a product for a client, I make it my utmost priority to ensure the product is well-made, secure, and efficient in productivity. As a student, I also plan on branching out to other industries in computer science such as software engineering and cybersecurity. Regardless of the task, I will do whatever it takes to accomplish the goal established.</p>
+    </article>
+
+</div>
+
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            } else {
+                entry.target.classList.remove('show');
+            }
+        });
+    });
+
+
+
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer.observe(el));
+
+
+</script>
+{% endblock content%}

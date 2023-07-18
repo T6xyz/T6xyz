@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>T6xyz Development</title>
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/cyborg/bootstrap.min.css">
+        <style>
+            .resize {
+                margin:0 0 7px 0;
+            }
+
+            body {
+
+                margin: 0 0 0 0;
+                padding: 0 0 0 0;
+            }
+
+            article {
+                display: grid;
+                place-items: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hidden {
+                opacity: 0;
+                transition: 5s;
+            }
+
+            @media(prefers-reduced-motion) {
+                .hidden {
+                    transition: none;
+                }
+            }
+            .show {
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+              <a class="navbar-brand">T6xyz Development</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav me-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'view_resume' %}">Résumé
+                      <span class="visually-hidden">(current)</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'view_aboutme' %}">About me</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'view_education' %}">T6xyz Education</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'view_contacts' %}">Reference links</a>
+                  </li>
+    
+                </ul>
+              </div>
+            </div>
+        </nav>
+        {% block content %}
+        {% endblock content %}
+    </body>
+</html>

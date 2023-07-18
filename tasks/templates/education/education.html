@@ -1,0 +1,51 @@
+{% extends "homeview/homeview.html" %}
+{% block content %}
+<div style="height: 1780px;">
+    <h1 style = "text-align:center;">Coming Soon</h1>
+
+    <article style="margin-top: 75px;" class="hidden">
+        <h4>T6xyz Education</h4>
+        <p>Accessible, free, high-quality education for everyone, anywhere, anytime.</p>
+    </article>
+
+    <article style="margin-top: 540px;" class="hidden">
+        <h5>My belief about education</h5>
+        <p style="width: 60%;">Accessibility to high-quality academic lessons and education should be available to anyone regardless of social status, income level, location, and other characteristics. I believe that if anyone has access to the internet, they should be able to access high-quality education that can be used to better themselves academically and personally. I am passionate in my ambitions to provide the best education in order to give back and help others.</p>
+    </article>
+
+    <article style="margin-top: 540px;" class="hidden">
+        <h5>About T6xyz Education</h5>
+        <p>T6xyz Education will offer free, high-quality videos lessons on:</p>
+        <ul style="text-align: left;">
+            <li>Calculus I</li>
+            <li>Calculus II</li>
+            <li>Calculus III</li>
+            <li>Intro to Python</li>
+            <li>Intro to C++</li>
+            <li>Algorithms and data structures with Python</li>
+        </ul>
+    </article>
+
+</div>
+
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            } else {
+                entry.target.classList.remove('show');
+            }
+        });
+    });
+
+
+
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer.observe(el));
+
+
+</script>
+{% endblock content%}
