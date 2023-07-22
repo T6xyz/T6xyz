@@ -3,6 +3,7 @@
 
 <html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>T6xyz Development</title>
         <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/cyborg/bootstrap.min.css">
         <style>
@@ -36,19 +37,25 @@
             .show {
                 opacity: 1;
             }
+
+            .items {
+                display: none;
+                right: 0px;
+                position: absolute;
+            }
         </style>
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <body id="main">
+        <nav style="position: relative;" class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div class="container-fluid">
               <a class="navbar-brand">T6xyz Development</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" onclick=myToggle()>
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarColor02">
+              <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav me-auto">
                   <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'view_resume' %}">Résumé
+                    <a class="nav-link" href="{% url 'view_resume' %}">Résumé
                       <span class="visually-hidden">(current)</span>
                     </a>
                   </li>
@@ -66,7 +73,57 @@
               </div>
             </div>
         </nav>
+        <div style="float: right;" id="navbarColor02" class="items">
+            <ul style="border: 1px solid rgb(154, 153, 153); border-radius: 5px; padding: 3px; background-color: black;" class="navbar-nav me-auto" id='tryagain'>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'view_resume' %}">Résumé
+                    <span class="visually-hidden">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'view_aboutme' %}">About me</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'view_education' %}">T6xyz Education</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'view_contacts' %}">Reference links</a>
+                </li>
+  
+              </ul>
+
+        </div>
         {% block content %}
         {% endblock content %}
+        <script>
+            function myToggle() {
+                var items = document.getElementById('navbarColor02')
+    
+                if (items.style.display == "block") {
+                    items.style.display = "none"
+    
+                } else {
+                    items.style.display = "block"
+                }
+    
+            }
+
+            document.addEventListener('mouseup', function(e){
+                var mainDiv = document.getElementById('navbarColor02');
+                if (!mainDiv.contains(e.target)) {
+                    mainDiv.style.display = 'none';
+                }
+
+            });
+            
+            window.addEventListener('resize', function(e){
+
+                var mainDiv = document.getElementById('navbarColor02');
+
+                mainDiv.style.display = 'none'
+            })
+
+            
+        </script>
     </body>
 </html>
